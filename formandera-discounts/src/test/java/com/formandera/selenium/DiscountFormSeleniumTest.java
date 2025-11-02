@@ -1,0 +1,60 @@
+package com.formandera.selenium;
+
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class DiscountFormSeleniumTest {
+
+    private WebDriver driver;
+
+    @BeforeEach
+    void setup() {
+    	// Indica a Selenium dónde está el ejecutable de ChromeDriver
+        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver"); //<--- ADAPTAR A VUESTRA RUTA
+        // System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe"); //<--- ADAPTAR A VUESTRA RUTA
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        driver = new ChromeDriver(options);
+        driver.get("http://localhost:8080/descuento");
+    }
+
+    @AfterEach
+    void tearDown() {
+    	if (driver != null) {
+            driver.quit();
+        }
+    }
+
+    @Test
+    void testGivenPremium21CursosAnd100PrecioBaseWhenCalcularDescuentoThenDescuentoIgual25PrecioFinal75() {
+        driver.findElement(By.id("nCursosPrevios")).sendKeys("21");
+        driver.findElement(By.id("esPremium")).click();
+        driver.findElement(By.id("precioBase")).sendKeys("100");
+        driver.findElement(By.id("btnCalcular")).click();
+
+        WebElement porcentaje = driver.findElement(By.id("porcentaje"));
+        WebElement precioFinal = driver.findElement(By.id("precioFinal"));
+        assertEquals("25.0", porcentaje.getText(), 
+            "Se esperaba 25% para usuario premium con 21 cursos");
+        assertEquals("75.0", precioFinal.getText(), 
+        		"Se esperaba precio 75 para usuario premium con 21 cursos");
+    }
+    
+    @Test
+    void testGivenPremiumMenos3CursosAnd100PrecioBaseWhenCalcularDescuentoThenMensajeError() {
+        driver.findElement(By.id("nCursosPrevios")).sendKeys("-3");
+        driver.findElement(By.id("esPremium")).click();
+        driver.findElement(By.id("precioBase")).sendKeys("100");
+        driver.findElement(By.id("btnCalcular")).click();
+
+        WebElement alerta = driver.findElement(By.id("alert"));
+        assertEquals("Error: El número de cursos no puede ser negativo.", alerta.getText(), 
+            "Se esperaba un mensaje de error por número de cursos negativos");
+    }
+}
+
+

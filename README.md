@@ -200,7 +200,7 @@ Para cada formulario, se elaborará una **tabla general de diseño de casos de p
 **Recomendaciones:**
 
 - Crear una clase de prueba `CourseSearchSeleniumTest.java` en la carpeta `src/test/java`.  
-- Usar el patrón de nombres: `test_given_X_when_Y_then_Z`.  
+- Usar el patrón de nombres: `testGivenXWhenYThenZ`.  
 - Limpiar los recursos con `driver.quit()` en un método `@AfterEach`.  
 - Agrupar las pruebas en suites según la validez de las entradas.  
 - Si un caso falla, registrar en la tabla “Valor observado” el mensaje real mostrado por la aplicación.

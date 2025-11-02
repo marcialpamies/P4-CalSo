@@ -160,19 +160,6 @@ Para más información sobre el uso de Selenium pueden consultarse las siguiente
 - Se creará un repositorio de **GitHub** con el nombre `CalSo2526_P4-grupoXX`, donde *XX* representa el número del grupo.  
 - Cada miembro del grupo trabajará en una rama personal, siguiendo el flujo habitual: commits frecuentes, `push` diario y posterior `merge` a la rama `main`.  
 
-```mermaid
-flowchart TD
-    A[main]
-    B[rama_A]
-    C[rama_B]
-    Bc[Commit A]
-    Cc[Commit B]
-    PRa[Pull Request A]
-    PRb[Pull Request B]
-    A --> B --> Bc --> PRa --> A
-    A --> C --> Cc --> PRb --> A
-```
-
 ---
 
 ## Ejercicios propuestos
@@ -199,7 +186,7 @@ Para cada formulario, se elaborará una **tabla general de diseño de casos de p
 
 | Nº | Nombre del caso | Clases de equivalencia cubiertas | Valores de entrada (edad, temática, puntuación, cursos) | Valor esperado | Valor observado |
 |----|-----------------|----------------------------------|---------------------------------------------------------|----------------|-----------------|
-| 1 | testGivenEdad11TematicaProgramacionPuntuacionMinima4DotCeroYCursosCompletado3WhwnBuscarThenMensajeErrorEdadMinima | **CE01**...(otras del resto de parámetros) | 10, Programación, 4.0, 3 | Error: “La edad mínima es 12 años” | - |
+| 1 | testGivenEdad11TematicaProgramacionPuntuacionMinima4DotCeroYCursosCompletado3WhenBuscarThenMensajeErrorEdadMinima | **CE01**...(otras del resto de parámetros) | 10, Programación, 4.0, 3 | Error: “La edad mínima es 12 años” | - |
 | |
 
 

@@ -32,6 +32,27 @@ Si se usa el ordenador personal:
 - Verificar la ejecución correcta de una prueba simple con Selenium antes de comenzar los ejercicios.  
 - Si aparece el error `SessionNotCreatedException`, comprobar la compatibilidad entre `chromedriver` y la versión de Chrome.
 
+### Qué es ChromeDriver
+
+**ChromeDriver** es un ejecutable independiente que actúa como intermediario entre **Selenium WebDriver** y el navegador **Google Chrome**.  
+Sin este componente, Selenium no puede abrir ni controlar el navegador. Par descargar ChromeDriver debéis seleccionar la versión compatible con vuestro Chrome en: [https://developer.chrome.com/docs/chromedriver?hl=es-419](https://developer.chrome.com/docs/chromedriver?hl=es-419)
+
+### Configuración del ChromeDriver
+
+1. Descarga la versión de **ChromeDriver** que coincida con la versión de tu navegador Google Chrome.  
+   - Para comprobar tu versión, abre Chrome y escribe en la barra de direcciones:  
+     ```
+     chrome://settings/help
+     ```
+2. Descomprime el archivo descargado y coloca el ejecutable:
+   - En **Windows:** por ejemplo en `C:\drivers\chromedriver.exe`  
+   - En **macOS/Linux:** por ejemplo en `/usr/local/bin/chromedriver`
+3. Indica la ruta en tu código Java antes de crear el objeto `ChromeDriver`:
+
+   ```java
+   System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
+   WebDriver driver = new ChromeDriver();
+
 ---
 
 ## Contexto

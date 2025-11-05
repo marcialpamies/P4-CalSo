@@ -14,8 +14,8 @@ public class DiscountFormSeleniumTest {
     @BeforeEach
     void setup() {
     	// Indica a Selenium dónde está el ejecutable de ChromeDriver
-        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver"); //<--- ADAPTAR A VUESTRA RUTA
-        // System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe"); //<--- ADAPTAR A VUESTRA RUTA
+        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver"); //<--- ADAPTAR A LA RUTA DONDE SE ENCUENTRE EL EJECUTABLE DEL CHROMEDRIVER
+        // System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe"); //<--- ADAPTAR A LA RUTA DONDE SE ENCUENTRE EL EJECUTABLE DEL CHROMEDRIVER
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);

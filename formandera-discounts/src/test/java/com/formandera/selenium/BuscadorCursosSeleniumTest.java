@@ -23,8 +23,8 @@ public class BuscadorCursosSeleniumTest {
     @BeforeAll
     void setupClass() {
         // Ruta al chromedriver (ajústala si es necesario)
-    	 System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver"); //<--- ADAPTAR A VUESTRA RUTA
-         // System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe"); //<--- ADAPTAR A VUESTRA RUTA
+    	 System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver"); //<--- ADAPTAR A LA RUTA DONDE SE ENCUENTRE EL EJECUTABLE DEL CHROMEDRIVER
+         // System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe"); //<--- ADAPTAR A LA RUTA DONDE SE ENCUENTRE EL EJECUTABLE DEL CHROMEDRIVER
     }
 
     @BeforeEach

@@ -20,20 +20,26 @@ public class BuscadorCursosSeleniumTest {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    @BeforeAll
-    void setupClass() {
-        // Ruta al chromedriver (ajústala si es necesario)
-    	 System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver"); //<--- ADAPTAR A LA RUTA DONDE SE ENCUENTRE EL EJECUTABLE DEL CHROMEDRIVER
-         // System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe"); //<--- ADAPTAR A LA RUTA DONDE SE ENCUENTRE EL EJECUTABLE DEL CHROMEDRIVER
-    }
-
-    @BeforeEach
+    /* @BeforeEach
     void setup() {
-    	ChromeOptions options = new ChromeOptions();
+    	// Indica a Selenium dónde está el ejecutable de ChromeDriver
+        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver"); //<--- ADAPTAR A VUESTRA RUTA
+        // System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe"); //<--- ADAPTAR A VUESTRA RUTA
+        ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        driver.get("http://localhost:8080/buscar");
+        driver.get("http://localhost:8080/descuento");
+    }*/
+    
+    @BeforeAll
+    static void setupClass() {
+        WebDriverManager.chromedriver().setup();
+    }
+    
+    @BeforeEach
+    void setup() {
+        driver = new ChromeDriver();
+        driver.get("http://localhost:8080/buscador");
     }
 
     @AfterEach

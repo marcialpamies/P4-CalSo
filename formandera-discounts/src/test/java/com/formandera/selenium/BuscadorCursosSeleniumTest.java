@@ -78,6 +78,7 @@ public class BuscadorCursosSeleniumTest {
 
         // 3. Verificar resultado esperado
         // Esperamos a tabla de resultados o alerta OK (mensaje verde superior)
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement alertaOk = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.id("alertOk"))
         );
@@ -142,11 +143,13 @@ void testGivenEdadTamaticaOPuntuacionInvalidoWhenBuscarCursosThenMuestraMensajeE
     // 3. Verificar resultado esperado
     
         // Esperar a que aparezca alerta de error
-        WebElement alerta = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.id("alertError"))
-        );
-        assertTrue(alerta.isDisplayed(), "No se mostró el mensaje de error esperado.");
-        assertEquals(resultadoEsperado,alerta.getText(), "El mensaje de alerta no coincide con el esperado.");
-    } 
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    WebElement alerta = wait.until(
+            ExpectedConditions.visibilityOfElementLocated(By.id("alertError"))
+    
+    );
+    assertTrue(alerta.isDisplayed(), "No se mostró el mensaje de error esperado.");
+    assertEquals(resultadoEsperado,alerta.getText(), "El mensaje de alerta no coincide con el esperado.");
+ } 
 }
 

@@ -6,8 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-//import ch.qos.logback.core.util.Duration;
 import java.time.Duration;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -16,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DiscountFormSeleniumTest {
 
     private WebDriver driver;
+    private WebDriverWait wait;
 
     /* @BeforeEach
     void setup() {
@@ -53,7 +52,9 @@ public class DiscountFormSeleniumTest {
         driver.findElement(By.id("precioBase")).sendKeys("100");
         driver.findElement(By.id("btnCalcular")).click();
 
-        WebElement porcentaje = driver.findElement(By.id("porcentaje"));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement porcentaje = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("porcentaje")));
+
         WebElement precioFinal = driver.findElement(By.id("precioFinal"));
         assertEquals("25.0", porcentaje.getText(), 
             "Se esperaba 25% para usuario premium con 21 cursos");
@@ -68,10 +69,9 @@ public class DiscountFormSeleniumTest {
         driver.findElement(By.id("precioBase")).sendKeys("100");
         driver.findElement(By.id("btnCalcular")).click();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement alert = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("alert"))); 
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement alerta = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("alert"))); 
         
-        WebElement alerta = driver.findElement(By.id("alert"));
         assertEquals("Error: El número de cursos no puede ser negativo.", alerta.getText(), 
             "Se esperaba un mensaje de error por número de cursos negativos");
     }
